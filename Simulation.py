@@ -1,11 +1,7 @@
 from Peep import Peeps
 from History import CHistory
 from Predictor import CPredictor
-
-BAR_SIZE = 60
-POPULATION = 100
-PREDICTORS_PER_PEEP = 3
-STEPS = 100
+from Parameters import *
 
 peeps = []
 for i in range(0, POPULATION):

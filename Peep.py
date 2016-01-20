@@ -1,6 +1,5 @@
 import Predictor
-
-BAR_SIZE = 60
+from Parameters import *
 
 
 class Peeps:

@@ -1,11 +1,8 @@
 from random import randint
-
-POPULATION = 100
-BAR_SIZE = 60
+from Parameters import *
 
 
 class CPredictor:
-    NR_OF_PREDICTORS = 9
 
     predictors = {}
     id = 0
@@ -14,7 +11,7 @@ class CPredictor:
 
     def __init__(self, id, initAsRandom):
         if initAsRandom:
-            self.id = randint(1, self.NR_OF_PREDICTORS)
+            self.id = randint(1, NR_OF_PREDICTORS)
         elif id:
             self.id = id
         else:
