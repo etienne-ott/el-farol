@@ -1,7 +1,6 @@
-#import Peep, History, Predictor
-from History import *
 from Peep import Peeps
-from Predictor import *
+from History import CHistory
+from Predictor import CPredictor
 
 BAR_SIZE = 60
 POPULATION = 100
@@ -12,7 +11,7 @@ peeps = []
 for i in range(0, POPULATION):
     peeps.append(Peeps(PREDICTORS_PER_PEEP))
 
-history = History()
+history = CHistory()
 
 for i in range(0, STEPS):
     # Predict
@@ -31,4 +30,4 @@ for i in range(0, STEPS):
 # Print output
 print(history.toHTML())
 print("<br/>")
-print(Predictor.getRankingsAsHTML())
+print(CPredictor.getRankingsAsHTML())

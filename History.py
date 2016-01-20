@@ -1,20 +1,24 @@
-class History:
+class CHistory:
     hist = []
 
     def add(self, tally):
         self.hist.append(tally)
 
     def get(self, nr):
-        if nr < 0 or nr > self.count():
+        # nr is one-indexed
+        if nr < 0 or nr > self.count() - 1:
             return 0
         else:
-            return self.hist[nr]
+            return self.hist[nr - 1]
+
+    def last(self):
+        return self.hist[len(self.hist) - 1]
 
     def count(self):
-        return self.hist.count()
+        return len(self.hist)
 
     def toHTML(self):
-        str = "History: "
+        html = "History: "
         for point in self.hist:
-            str += point + " "
-        return str
+            html += str(point) + " "
+        return html

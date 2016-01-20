@@ -1,11 +1,13 @@
 from random import randint
-from Simulation import POPULATION, BAR_SIZE
+
+POPULATION = 100
+BAR_SIZE = 60
 
 
-class Predictor:
+class CPredictor:
     NR_OF_PREDICTORS = 9
 
-    predictors = []
+    predictors = {}
     id = 0
     ranking = 0
     lastPrediction = 0
@@ -18,7 +20,7 @@ class Predictor:
         else:
             raise Exception("No ID given for nonrandom predictor in constructor.")
 
-        Predictor.predictors[self.id] = self
+        CPredictor.predictors[self.id] = self
 
     def predict(self, history):
         if self.id == 1:
@@ -40,7 +42,7 @@ class Predictor:
         elif self.id == 9:
             self.lastPrediction = history.get(history.count() - 2)
         else:
-            raise Exception("Unexpected predictor ID: " + self.id)
+            raise Exception("Unexpected predictor ID: " + str(self.id))
 
         return self.lastPrediction
 
@@ -56,8 +58,9 @@ class Predictor:
     def getLastPrediction(self):
         return self.lastPrediction
 
-    def getRankingsAsHTML(self):
+    @staticmethod
+    def getRankingsAsHTML():
         output = "Rankings:<br/>"
-        for pred in self.predictors:
-            output += pred.getId() + ": " + pred.getRanking() + "<br/>"
+        for pred in CPredictor.predictors.values():
+            output += str(pred.getId()) + ": " + str(pred.getRanking()) + "<br/>"
         return output

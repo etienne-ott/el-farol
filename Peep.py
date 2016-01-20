@@ -1,5 +1,6 @@
 import Predictor
-from Simulation import BAR_SIZE
+
+BAR_SIZE = 60
 
 
 class Peeps:
@@ -7,7 +8,7 @@ class Peeps:
 
     def __init__(self, nrOfPredictors):
         for i in range(0, nrOfPredictors):
-            self.predictors.append(Predictor(0, True))
+            self.predictors.append(Predictor.CPredictor(0, True))
 
     def getBestPredictor(self):
         return self.predictors[0]
