@@ -1,5 +1,6 @@
 class CHistory:
-    hist = []
+    def __init__(self):
+        self.hist = []
 
     def add(self, tally):
         self.hist.append(tally)
@@ -12,7 +13,10 @@ class CHistory:
             return self.hist[nr - 1]
 
     def last(self):
-        return self.hist[len(self.hist) - 1]
+        if len(self.hist) > 0:
+            return self.hist[len(self.hist) - 1]
+        else:
+            return 0
 
     def count(self):
         return len(self.hist)

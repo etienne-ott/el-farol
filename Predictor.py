@@ -3,20 +3,18 @@ from Parameters import *
 
 
 class CPredictor:
-
     predictors = {}
-    id = 0
-    ranking = 0
-    last_prediction = 0
 
-    def __init__(self, id, init_as_random):
+    def __init__(self, predictor_id, init_as_random):
         if init_as_random:
             self.id = randint(1, NR_OF_PREDICTORS)
-        elif id:
-            self.id = id
+        elif predictor_id:
+            self.id = predictor_id
         else:
             raise Exception("No ID given for nonrandom predictor in constructor.")
 
+        self.ranking = 0
+        self.last_prediction = 0
         CPredictor.predictors[self.id] = self
 
     def predict(self, history):
