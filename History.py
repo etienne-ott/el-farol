@@ -17,7 +17,7 @@ class CHistory:
     def count(self):
         return len(self.hist)
 
-    def toHTML(self):
+    def to_html(self):
         html = "History: "
         for point in self.hist:
             html += str(point) + " "

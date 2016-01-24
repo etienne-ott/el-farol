@@ -7,10 +7,10 @@ class CPredictor:
     predictors = {}
     id = 0
     ranking = 0
-    lastPrediction = 0
+    last_prediction = 0
 
-    def __init__(self, id, initAsRandom):
-        if initAsRandom:
+    def __init__(self, id, init_as_random):
+        if init_as_random:
             self.id = randint(1, NR_OF_PREDICTORS)
         elif id:
             self.id = id
@@ -21,43 +21,43 @@ class CPredictor:
 
     def predict(self, history):
         if self.id == 1:
-            self.lastPrediction = 0
+            self.last_prediction = 0
         elif self.id == 2:
-            self.lastPrediction = POPULATION
+            self.last_prediction = POPULATION
         elif self.id == 3:
-            self.lastPrediction = randint(0, POPULATION)
+            self.last_prediction = randint(0, POPULATION)
         elif self.id == 4:
-            self.lastPrediction = BAR_SIZE + randint(-5, 5)
+            self.last_prediction = BAR_SIZE + randint(-5, 5)
         elif self.id == 5:
-            self.lastPrediction = BAR_SIZE - 1
+            self.last_prediction = BAR_SIZE - 1
         elif self.id == 6:
-            self.lastPrediction = history.last()
+            self.last_prediction = history.last()
         elif self.id == 7:
-            self.lastPrediction = history.last() - 10
+            self.last_prediction = history.last() - 10
         elif self.id == 8:
-            self.lastPrediction = history.last() + 10
+            self.last_prediction = history.last() + 10
         elif self.id == 9:
-            self.lastPrediction = history.get(history.count() - 2)
+            self.last_prediction = history.get(history.count() - 2)
         else:
             raise Exception("Unexpected predictor ID: " + str(self.id))
 
-        return self.lastPrediction
+        return self.last_prediction
 
-    def getId(self):
+    def get_id(self):
         return self.id
 
-    def incRanking(self):
+    def inc_ranking(self):
         self.ranking += 1
 
-    def getRanking(self):
+    def get_ranking(self):
         return self.ranking
 
-    def getLastPrediction(self):
-        return self.lastPrediction
+    def get_last_prediction(self):
+        return self.last_prediction
 
     @staticmethod
-    def getRankingsAsHTML():
+    def get_rankings_as_html():
         output = "Rankings:<br/>"
         for pred in CPredictor.predictors.values():
-            output += str(pred.getId()) + ": " + str(pred.getRanking()) + "<br/>"
+            output += str(pred.get_id()) + ": " + str(pred.get_ranking()) + "<br/>"
         return output

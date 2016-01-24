@@ -13,17 +13,17 @@ for i in range(0, STEPS):
     # Predict
     tally = 0
     for peep in peeps:
-        prediction = peep.getBestPredictor().predict(history)
+        prediction = peep.get_best_predictor().predict(history)
         if prediction <= BAR_SIZE:
             tally += 1
 
     # Reevaluate
     for peep in peeps:
-        peep.evaluatePredictors(tally)
+        peep.evaluate_predictors(tally)
 
     history.add(tally)
 
 # Print output
-print(history.toHTML())
+print(history.to_html())
 print("<br/>")
-print(CPredictor.getRankingsAsHTML())
+print(CPredictor.get_rankings_as_html())
